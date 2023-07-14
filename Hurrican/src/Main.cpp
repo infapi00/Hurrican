@@ -15,9 +15,7 @@
 // Defines
 // --------------------------------------------------------------------------------------
 
-#ifdef NDEBUG
-#  define SHOW_CRACKTRO
-#endif
+#define SHOW_CRACKTRO
 
 // --------------------------------------------------------------------------------------
 // Includes
@@ -74,7 +72,7 @@ bool GameRunning = true;         // Spiel läuft :-)
 bool GamePaused = false;         // Spiel eingefroren (wenn man zb das Fenster verlässt)
 bool NochKeinFullScreen = true;  // Logo noch anzeigen in Paint ?
 #ifndef NDEBUG
-bool DebugMode = false;              // Debug Mode ein/aus
+bool DebugMode = true;              // Debug Mode ein/aus
 #endif                               //NDEBUG
 float SpeedFaktor = 1.0f;            // Faktor, mit dem alle Bewegungen verrechnet werden
 TexturesystemClass Textures;         // DKS - Added Texturesystem class (see DX8Sprite.cpp)
@@ -808,11 +806,14 @@ bool Heartbeat() {
 
             Cracktro->Run();
 
+	    if (CommandLineParams.ShowFPS)
+	       ShowFPS();
+
             if (!Cracktro->IsRunning()) {
                 delete (Cracktro);
                 SpielZustand = GameStateEnum::MAINMENU;
 
-                if (!GameInit2())
+                // if (!GameInit2())
                     return false;
             }
 #else
@@ -1037,7 +1038,7 @@ void ShowFPS() {
         frame_ctr = 0;
         ticks_fps_last_updated = cur_ticks;
     }
-    pMenuFont->DrawText(0, 0, char_buf.str().c_str(), 0xFFFFFFFF);
+    // pMenuFont->DrawText(0, 0, char_buf.str().c_str(), 0xFFFFFFFF);
 }
 
 //----------------------------------------------------------------------------
