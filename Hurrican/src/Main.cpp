@@ -1027,6 +1027,7 @@ void ShowFPS() {
     static std::stringstream char_buf;
 
     frame_ctr++;
+    fprintf(stderr, "\n\n-------------------------- FRAME %i -------------------------\n", frame_ctr);
     unsigned int cur_ticks = SDL_GetTicks();
     unsigned int ticks_elapsed = cur_ticks - ticks_fps_last_updated;
     if (ticks_elapsed > FPS_UPDATE_FREQ_IN_TICKS && frame_ctr > 0) {

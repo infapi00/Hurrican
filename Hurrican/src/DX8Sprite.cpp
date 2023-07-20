@@ -1034,6 +1034,7 @@ void DirectGraphicsSprite::RenderSpriteScaledRotated(float x,
 
 void RenderRect4(float x, float y, float width, float height, D3DCOLOR c1, D3DCOLOR c2, D3DCOLOR c3, D3DCOLOR c4) {
 
+   fprintf(stderr, "<RenderRect4>\n");
     // Vertice Koordinaten
     float l = x;           // Links
     float r = x + width;   // Rechts
@@ -1062,6 +1063,7 @@ void RenderRect4(float x, float y, float width, float height, D3DCOLOR c1, D3DCO
 
     // Rechteck zeichnen
     DirectGraphics.RendertoBuffer(GL_TRIANGLE_STRIP, 2, &TriangleStrip[0]);
+    fprintf(stderr, "</RenderRect4>\n");
 }
 
 // --------------------------------------------------------------------------------------
